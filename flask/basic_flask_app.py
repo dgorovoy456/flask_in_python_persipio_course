@@ -8,4 +8,7 @@ def home():
     return 'Hello World'
 
 
-app.run()
+# app.run()
+app.run(debug=True)
+
+
