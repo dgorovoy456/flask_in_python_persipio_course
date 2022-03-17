@@ -1,7 +1,7 @@
 /*! HTML5 Boilerplate v5.0 | MIT License | http://h5bp.com/ */
 
 html {
-    color: #289;
+    color: #1F2A2A;
     font-size: 1em;
     line-height: 1.4;
 }
@@ -70,22 +70,22 @@ body {
    =================== */
 
 .header-container {
-    border-bottom: 20px solid #e44d26;
+    border-bottom: 20px solid #748E90;
 }
 
 .footer-container,
 .main aside {
-    border-top: 20px solid #e44d26;
+    border-top: 20px solid #748E90;
 }
 
 .header-container,
 .footer-container,
 .main aside {
-    background: #f16529;
+    background: #46B5BD;
 }
 
 .title {
-    color: white;
+    color: #1F2A2A;
 }
 
 /* ==============
@@ -153,8 +153,22 @@ nav a:hover {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-
+a {
+    color: #E94D1C;
+}
+a:hover {
+    color: #E9C31C;
+}
+a:visited{
+    color: #68E91C;
+}
+h1,h2,h3,h4,h5,h6 {
+    color: #0E216D;
+}
+.main aside h3,
+footer h3{
+    color:white;
+}
 
 
 
