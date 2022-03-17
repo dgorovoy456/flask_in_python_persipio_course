@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Feedback</title>
-</head>
+{% extends "base.html" %}
+
+{% block title %}
+   Feedback
+{% endblock %}
+
+{% block content %}
 <section>
   <form action="" method="post">
     <p>
@@ -15,4 +16,6 @@
     </p>
   </form>
 </section>
-</html>
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
