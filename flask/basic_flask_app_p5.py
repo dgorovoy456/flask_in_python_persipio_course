@@ -1,8 +1,10 @@
 from datetime import datetime
-
-from flask import Flask, render_template, request
+from logging import DEBUG
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
+
+app.logger.setLevel(DEBUG)
 
 feedback_list = []
 
@@ -26,6 +28,8 @@ def feedback():
     if request.method == 'POST':
         url = request.form['url']
         store_feedback(url)
+        app.logger.debug('stored feedback ' + url)
+        return redirect(url_for('index'))
     return render_template('feedback.html')
 
 
