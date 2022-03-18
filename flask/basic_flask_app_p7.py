@@ -1,5 +1,6 @@
 from datetime import datetime
 from logging import DEBUG
+from forms import RegistrationForm, LoginFrom
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
@@ -32,6 +33,18 @@ def feedback():
         flash('Your Feedback: ' + url)
         return redirect(url_for('index'))
     return render_template('feedback.html')
+
+
+@app.route('/register')
+def register():
+    form = RegistrationForm()
+    return render_template('register.html', title='Register', form=form)
+
+
+@app.route('/login')
+def login():
+    form = LoginFrom()
+    return render_template('login.html', title='Login', form=form)
 
 
 @app.errorhandler(404)
