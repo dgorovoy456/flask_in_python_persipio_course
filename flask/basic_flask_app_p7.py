@@ -50,6 +50,12 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginFrom()
+    if form.validate_on_submit():
+        if form.email.data == 'den.h@gmail.com' and form.password.data == 'qwerty':
+            flash('Logged in')
+            return redirect(url_for('index'))
+        else:
+            flash('Log in unsuccessful')
     return render_template('login.html', title='Login', form=form)
 
 
