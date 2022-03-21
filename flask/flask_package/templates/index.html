@@ -8,9 +8,16 @@ Project -- Welcome
 <article>
     <header>
         <h1>Welcome</h1>
+        <body>
+        <img src="/../static/img/puppy.jpg" alt="Puppy">
+        </body>
         <h3>Welcome to the world of puppies</h3>
         <p>One store for all your pet needs</p>
     </header>
+    <section>
+        <h3>Available Puppies</h3>
+        <li><a href="{{ url_for ('sale') }}">Click Here</a> </li>
+    </section>
 
 </article>
 {% endblock %}

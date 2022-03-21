@@ -16,10 +16,14 @@ def store_feedback(url):
     ))
 
 
+def new_feedback(num):
+    return sorted(feedback_list, key=lambda bm: bm['date'], reverse=True)[:num]
+
+
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', new_feedback=new_feedback(3))
 
 
 @app.route('/feedback', methods=['GET', 'POST'])
@@ -35,7 +39,7 @@ def feedback():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if current_user.is_authentificated():
+    if current_user.is_authenticated():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -68,6 +72,10 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/sale')
+def sale():
+    return render_template('sale.html')
 
 
 @app.errorhandler(404)
