@@ -15,6 +15,19 @@
     - user = User.query.get(2)
     print(user) == User('admin','admin@gmail.com', 'default.jpg')
     - db.drop_all()
+4. CryptPassword-tips:
+    - from flask_bcrypt import Bcrypt
+    - b = Bcrypt()
+    - b.generate_password_hash('testing') >> b'$2b$12$vxkuRvWK4pxKs0CZ/sE1WebkpncLjpfBGZd3zAxDjA9AZ6q84Ppy6'
+    - hashed_pw = b.generate_password_hash('testing').decode('utf-8') >> '$2b$12$ujdVkZMWuiQ6uLjfXBmJje1hSdCPWlSozIY0HDsUzjqO/7Mj6W.Wq'
+    - b.check_password_hash(hashed_pw, 'testing') >> True/False
+5. ps -fA | grep python - ot find background process
+6. kill -9 pid - to kill it:)
+7.
+
+
+
+
 
 
 

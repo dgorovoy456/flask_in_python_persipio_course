@@ -1,8 +1,10 @@
 from flask import render_template, request, redirect, url_for, flash
 from flask_package.forms import RegistrationForm, LoginFrom
-from flask_package import app
+from flask_package import app, db, bcrypt
 from datetime import datetime
 from flask_package.models import User
+from flask_login import login_user, logout_user, current_user
+
 feedback_list = []
 
 
@@ -33,8 +35,14 @@ def feedback():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if current_user.is_authentificated():
+        return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
         flash('Account created !')
         return redirect(url_for('login'))
     if form.errors:
@@ -47,12 +55,19 @@ def register():
 def login():
     form = LoginFrom()
     if form.validate_on_submit():
-        if form.email.data == 'den.h@gmail.com' and form.password.data == 'qwerty':
-            flash('Logged in')
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user)
             return redirect(url_for('index'))
-        else:
-            flash('Log in unsuccessful')
+    else:
+        flash('Log in unsuccessful')
     return render_template('login.html', title='Login', form=form)
+
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 @app.errorhandler(404)
