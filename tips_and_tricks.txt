@@ -1,3 +1,21 @@
 1. http://www.initializr.com/ - to get templates
 2. https://htmlcolorcodes.com/ - to choose color and get hex number of it
-3.
+3.SQL-tips
+    - from basic_flask_app_p8 import db
+    - from basic_flask_app_p8 import User
+    - db.create_all()
+    - user_admin = User(username='admin', email='admin@gmail.com', password='password')
+    - db.session.add(user_admin)
+    - db.session.commit()
+    - User.query.all() == [User('user','user@gmail.com', 'default.jpg'), User('admin','admin@gmail.com', 'default.jpg')]
+    - User.query.first() == User('user','user@gmail.com', 'default.jpg')
+    - User.query.filter_by(username='admin').all() == [User('admin','admin@gmail.com', 'default.jpg')]
+    - user = User.query.filter_by(username= 'admin').first()
+    print(user.id) == 2 (generated automatically)
+    - user = User.query.get(2)
+    print(user) == User('admin','admin@gmail.com', 'default.jpg')
+    - db.drop_all()
+
+
+
+
