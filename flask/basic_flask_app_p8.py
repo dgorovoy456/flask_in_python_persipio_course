@@ -1,6 +1,6 @@
 from datetime import datetime
 from logging import DEBUG
-from forms import RegistrationForm, LoginFrom
+from flask_package.forms import RegistrationForm, LoginFrom
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 

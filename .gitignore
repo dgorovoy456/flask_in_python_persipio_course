@@ -1,4 +1,4 @@
 .idea/
-venv/
+flask/flaskenv/
 tmp.txt
 __pycache__/

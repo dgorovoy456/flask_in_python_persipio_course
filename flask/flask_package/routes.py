@@ -1,12 +1,8 @@
-from datetime import datetime
-from logging import DEBUG
+from flask import render_template, request, redirect, url_for, flash
 from flask_package.forms import RegistrationForm, LoginFrom
-from flask import Flask, render_template, request, redirect, url_for, flash
-
-app = Flask(__name__)
-app.secret_key = b'\xc5J3\x81\xce2\xda\x10'
-app.logger.setLevel(DEBUG)
-
+from flask_package import app
+from datetime import datetime
+from flask_package.models import User
 feedback_list = []
 
 
@@ -62,7 +58,3 @@ def login():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
